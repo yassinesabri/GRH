@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.employee.AddEmployeeController">
+   <children>
+      <Label layoutX="25.0" layoutY="50.0" text="First Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="50.0" text="Last Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="130.0" text="Job">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="409.0" layoutY="130.0" text="Departement">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="218.0" text="Email">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="218.0" prefHeight="27.0" prefWidth="67.0" text="Phone">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="311.0" prefHeight="27.0" prefWidth="89.0" text="Address">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="311.0" prefHeight="27.0" prefWidth="104.0" text="Hired Date">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="200.0" layoutY="419.0" onAction="#addBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="ADD">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="firstName" layoutX="136.0" layoutY="45.0" />
+      <JFXTextField fx:id="lastName" layoutX="555.0" layoutY="45.0" />
+      <JFXTextField fx:id="email" layoutX="136.0" layoutY="213.0" />
+      <JFXTextField fx:id="phone" layoutX="555.0" layoutY="200.0" />
+      <JFXTextField fx:id="address" layoutX="136.0" layoutY="306.0" />
+      <JFXDatePicker fx:id="hiredDate" editable="false" layoutX="555.0" layoutY="306.0" />
+      <JFXComboBox fx:id="job" layoutX="144.0" layoutY="128.0" promptText="Select Job" />
+      <JFXComboBox fx:id="departement" layoutX="560.0" layoutY="128.0" promptText="Select Departement" />
+      <JFXButton buttonType="RAISED" layoutX="484.0" layoutY="419.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="CANCEL">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</Pane>

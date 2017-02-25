@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane prefHeight="692.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.recruit.RecruitmentController">
+   <content>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1242.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <BorderPane prefHeight="692.0" prefWidth="1244.0">
+               <center>
+                  <TableView fx:id="recruitTable" prefHeight="492.0" prefWidth="993.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn fx:id="idRecruitCol" prefWidth="61.0" text="ID" />
+                      <TableColumn fx:id="firstNameCol" minWidth="0.0" prefWidth="116.99996948242188" text="First Name" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="111.0" text="Last Name" />
+                        <TableColumn fx:id="jobNameCol" minWidth="0.0" prefWidth="115.0" text="Job" />
+                        <TableColumn fx:id="emailCol" prefWidth="207.0" text="Email" />
+                        <TableColumn fx:id="applicationDateCol" prefWidth="142.0" text="Application Date" />
+                        <TableColumn fx:id="statusCol" minWidth="3.0" prefWidth="116.0" text="Status" />
+                        <TableColumn fx:id="closingDateCol" prefWidth="171.0" text="Closing Date" />
+                    </columns>
+                  </TableView>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="1134.0" spacing="40.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton buttonType="RAISED" onAction="#addRecruitBtn" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="ADD">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#updateRecruitBtn" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="UPDATE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton buttonType="RAISED" layoutX="75.0" layoutY="10.0" onAction="#deleteRecruitBtn" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="DELETE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="100.0" />
+                     </padding>
+                  </HBox>
+               </bottom>
+               <top>
+                  <VBox prefHeight="90.0" prefWidth="1220.0" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </children>
+      </Pane>
+   </content>
+</ScrollPane>

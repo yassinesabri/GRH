@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="784.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.leave.AddLeaveController">
+   <children>
+      <Label layoutX="25.0" layoutY="50.0" text="First Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="50.0" text="Last Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="147.0" prefHeight="27.0" prefWidth="67.0" text="Status">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="147.0" prefHeight="27.0" prefWidth="155.0" text="Dismissal Date">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="176.0" layoutY="392.0" onAction="#addBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="ADD">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="firstName" layoutX="179.0" layoutY="45.0" />
+      <JFXTextField fx:id="lastName" layoutX="564.0" layoutY="45.0" />
+      <JFXDatePicker fx:id="leaveDate" editable="false" layoutX="176.0" layoutY="142.0" />
+      <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="392.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXComboBox fx:id="status" layoutX="564.0" layoutY="145.0" promptText="Select Status" />
+      <Label layoutX="160.0" layoutY="230.0" prefHeight="27.0" prefWidth="104.0" text="Description">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="description" layoutX="268.0" layoutY="230.0" maxWidth="367.0" minWidth="367.0" prefHeight="125.0" prefWidth="367.0" style="-fx-background-color: #000000;" />
+   </children>
+</Pane>

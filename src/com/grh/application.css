@@ -1,0 +1,81 @@
+#connectedUser{
+	-fx-border-radius: 2px;
+   -fx-border-style: dashed;
+}
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 2 0 2;
+    -fx-background-color: #0c999c;
+}
+.table-view{
+   -fx-background-color: transparent;
+   -fx-border-color: black;
+   -fx-border-radius: 2px;
+   -fx-border-style: solid;
+}
+
+.table-row-cell {
+    -fx-cell-size: 40px;
+}
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    /*-fx-background-color: linear-gradient(#0c999c 0%, #0c999c 100%);*/
+    -fx-background-color: #0c999c;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */  
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #c9db98;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+.table-view > .virtual-flow > .scroll-bar:vertical .thumb,
+.table-view > .virtual-flow > .scroll-bar:horizontal .thumb{
+	-fx-background-color: #49a972;
+	-fx-background-insets: 1, 0, 0;
+    -fx-background-radius: 1.5em;
+	
+}
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+    
+    
+}
+
+/* .corner {-fx-background-color: #0c999c;} /*bottom right corner of tableView */
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button, 
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}

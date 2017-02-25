@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane prefHeight="694.0" prefWidth="1442.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.DashboardController">
+   <content>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1436.0">
+         <children>
+            <SplitPane fx:id="splitPane" dividerPositions="0.135" layoutX="-2.0" layoutY="-2.0" prefHeight="694.0" prefWidth="1441.0">
+              <items>
+                <AnchorPane fx:id="leftAnchor" minHeight="0.0" minWidth="0.0" prefHeight="711.0" prefWidth="211.0" style="-fx-background-color: #80c17e;">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="192.0" spacing="30.0">
+                           <children>
+                              <ImageView fitHeight="112.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="/assets/home.png" />
+                                 </image>
+                              </ImageView>
+                              <Pane prefHeight="51.0" prefWidth="192.0">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="19.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/assets/settings.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/assets/signout.png" />
+                                       </image>
+                                    </ImageView>
+                                    <JFXButton layoutX="129.0" onAction="#signout" prefHeight="40.0" prefWidth="40.0" ripplerFill="#ffffff00" style="-fx-background-color: transparent;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
+                                    <JFXButton layoutX="19.0" onAction="#settingsBtn" prefHeight="40.0" prefWidth="40.0" ripplerFill="#fafafa00" style="-fx-background-color: transparent;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
+                                 </children>
+                              </Pane>
+                              <Label fx:id="connectedUser" prefHeight="39.0" prefWidth="156.0" style="-fx-border-radius: 2px; -fx-border-style: dashed; -fx-padding: 5px; -fx-border-color: #ffffff;" text="WELCOME,">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER" prefHeight="426.0" prefWidth="192.0" spacing="35.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" onAction="#employeesBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="EMPLOYEES">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></JFXButton>
+                                    <JFXButton buttonType="RAISED" onAction="#recruitmentBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="RECRUITMENT">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></JFXButton>
+                                    <JFXButton buttonType="RAISED" onAction="#promotionsBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="PROMOTION">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></JFXButton>
+                                    <JFXButton buttonType="RAISED" onAction="#leaveBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="DISMISSAL">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></JFXButton>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="rightAnchor" minHeight="0.0" minWidth="0.0" prefHeight="692.0" prefWidth="1262.0" style="-fx-background-color: #ffffff;" />
+              </items>
+            </SplitPane>
+         </children>
+      </Pane>
+   </content>
+</ScrollPane>

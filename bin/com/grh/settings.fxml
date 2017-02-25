@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="630.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.SettingsController">
+   <children>
+      <Label layoutX="109.0" layoutY="45.0" text="Username">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="248.0" layoutY="333.0" onAction="#okBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="OK">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="user" layoutX="283.0" layoutY="35.0" maxWidth="235.0" minWidth="235.0" prefHeight="37.0" prefWidth="235.0" />
+      <Label layoutX="109.0" layoutY="118.0" text="Old Password">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="109.0" layoutY="193.0" text="New Password">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="109.0" layoutY="264.0" text="Retype Password">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXPasswordField fx:id="oldPassword" layoutX="283.0" layoutY="106.0" maxWidth="235.0" minWidth="235.0" prefHeight="37.0" prefWidth="235.0" />
+      <JFXPasswordField fx:id="newPassword" layoutX="283.0" layoutY="180.0" maxWidth="235.0" minWidth="235.0" prefHeight="37.0" prefWidth="235.0" />
+      <JFXPasswordField fx:id="reNewPassword" layoutX="283.0" layoutY="252.0" maxWidth="235.0" minWidth="235.0" prefHeight="37.0" prefWidth="235.0" />
+   </children>
+</Pane>

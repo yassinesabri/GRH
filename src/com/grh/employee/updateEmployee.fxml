@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.employee.UpdateEmployeeController">
+   <children>
+      <Label layoutX="25.0" layoutY="50.0" text="First Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="50.0" text="Last Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="130.0" text="Job">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="409.0" layoutY="130.0" text="Departement">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="218.0" text="Email">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="218.0" prefHeight="27.0" prefWidth="67.0" text="Phone">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="228.0" layoutY="389.0" prefHeight="27.0" prefWidth="104.0" text="Hired Date">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="updateButton" buttonType="RAISED" layoutX="331.0" layoutY="464.0" onAction="#updateBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="UPDATE">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="firstName" layoutX="136.0" layoutY="45.0" />
+      <JFXTextField fx:id="lastName" layoutX="555.0" layoutY="45.0" />
+      <JFXTextField fx:id="email" layoutX="136.0" layoutY="213.0" />
+      <JFXTextField fx:id="phone" layoutX="554.0" layoutY="213.0" />
+      <JFXDatePicker fx:id="hiredDate" editable="false" layoutX="372.0" layoutY="384.0" />
+      <JFXComboBox fx:id="job" layoutX="144.0" layoutY="128.0" promptText="Select Job" />
+      <JFXComboBox fx:id="departement" layoutX="560.0" layoutY="128.0" promptText="Select Departement" />
+      <JFXButton buttonType="RAISED" layoutX="545.0" layoutY="464.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="27.0" layoutY="310.0" prefHeight="27.0" prefWidth="67.0" text="Bonus">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="bonus" layoutX="136.0" layoutY="305.0" />
+      <Label layoutX="413.0" layoutY="310.0" prefHeight="27.0" prefWidth="92.0" text="Address">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="address" layoutX="555.0" layoutY="305.0" />
+      <JFXButton buttonType="RAISED" layoutX="99.0" layoutY="464.0" onAction="#loadData" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="LOAD DATA">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</Pane>
