@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.LeaveManager;
+import com.grh.employee.UpdateEmployeeController;
 import com.grh.tables.Leave;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -26,9 +27,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 public class LeaveController implements Initializable {
 	@FXML private TableView<Leave> leaveTable;
@@ -40,6 +43,20 @@ public class LeaveController implements Initializable {
 	@FXML private TableColumn<Leave, String> descriptionCol;
 
 	private ObservableList<Leave> leaveList;
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	updateLeaveBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("DELETE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	deleteLeaveBtn(actionEvent);
+	    }
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//promoTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
@@ -101,10 +118,17 @@ public class LeaveController implements Initializable {
 			Stage stage = new Stage();
 			stage.initOwner(((Node)event.getSource()).getScene().getWindow());
 			stage.initModality(Modality.WINDOW_MODAL);
-			FXMLLoader loader = new FXMLLoader();
-			Parent root = loader.load(getClass().getResource("updateLeave.fxml").openStream());
-			UpdateLeaveController updateleaveController = (UpdateLeaveController)loader.getController();
-			updateleaveController.setId(leave.getIdLeave());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("updateLeave.fxml"));
+			loader.setControllerFactory(new Callback<Class<?>, Object>() {
+				
+				@Override
+				public Object call(Class<?> param) {
+					UpdateLeaveController controller = new UpdateLeaveController();
+						controller.setId(leave.getIdLeave());
+			            return controller ;
+				}
+			});
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.getIcons().add(new Image("/assets/icon.png"));

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="792.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.recruit.UpdateRecruitController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="494.0" prefWidth="792.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.recruit.UpdateRecruitController">
    <children>
       <Label layoutX="25.0" layoutY="50.0" text="First Name">
          <font>
@@ -41,7 +41,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="updateButton" buttonType="RAISED" layoutX="329.0" layoutY="420.0" onAction="#updateBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="UPDATE">
+      <JFXButton fx:id="updateButton" buttonType="RAISED" layoutX="179.0" layoutY="420.0" onAction="#updateBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="UPDATE">
          <font>
             <Font size="18.0" />
          </font>
@@ -54,7 +54,7 @@
       <JFXTextField fx:id="email" layoutX="544.0" layoutY="143.0" maxWidth="226.0" minWidth="226.0" prefHeight="37.0" prefWidth="226.0" />
       <JFXDatePicker fx:id="applicationDate" editable="false" layoutX="171.0" layoutY="250.0" />
       <JFXComboBox fx:id="job" layoutX="179.0" layoutY="147.0" promptText="Select Job" />
-      <JFXButton buttonType="RAISED" layoutX="539.0" layoutY="420.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
+      <JFXButton buttonType="RAISED" layoutX="467.0" layoutY="420.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
          <font>
             <Font size="18.0" />
          </font>
@@ -69,13 +69,5 @@
          </font>
       </Label>
       <JFXDatePicker fx:id="closingDate" editable="false" layoutX="346.0" layoutY="341.0" />
-      <JFXButton buttonType="RAISED" layoutX="107.0" layoutY="420.0" onAction="#loadData" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="LOAD DATA">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
    </children>
 </Pane>

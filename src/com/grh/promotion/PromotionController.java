@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.PromotionManager;
+import com.grh.employee.UpdateEmployeeController;
 import com.grh.tables.*;
 
 import javafx.application.Platform;
@@ -27,9 +28,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 public class PromotionController implements Initializable{
 	@FXML private TableView<Promotion> promoTable;
@@ -41,6 +44,20 @@ public class PromotionController implements Initializable{
 	@FXML private TableColumn<Promotion, String> descriptionCol;
 
 	private ObservableList<Promotion> promotionList;
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	updatePromBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("DELETE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	deletePromBtn(actionEvent);
+	    }
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//promoTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
@@ -102,10 +119,17 @@ public class PromotionController implements Initializable{
 			Stage stage = new Stage();
 			stage.initOwner(((Node)event.getSource()).getScene().getWindow());
 			stage.initModality(Modality.WINDOW_MODAL);
-			FXMLLoader loader = new FXMLLoader();
-			Parent root = loader.load(getClass().getResource("updatePromo.fxml").openStream());
-			UpdatePromoController updatePromoController = (UpdatePromoController)loader.getController();
-			updatePromoController.setId(promotion.getIdProm());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("updatePromo.fxml"));
+			loader.setControllerFactory(new Callback<Class<?>, Object>() {
+				
+				@Override
+				public Object call(Class<?> param) {
+					UpdatePromoController controller = new UpdatePromoController();
+						controller.setId(promotion.getIdProm());
+			            return controller ;
+				}
+			});
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.getIcons().add(new Image("/assets/icon.png"));

@@ -36,7 +36,6 @@ public class UpdateEmployeeController implements Initializable {
 	@FXML private JFXComboBox<String> departement;
 	@FXML private JFXDatePicker hiredDate;
 	@FXML private JFXTextField bonus;
-	@FXML private JFXButton updateButton;
 	
 	@FXML
 	public void buttonPressed(KeyEvent event) throws Exception
@@ -57,9 +56,22 @@ public class UpdateEmployeeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			updateButton.setDisable(true);
 			job.setItems(JobManager.getAllJobs());
 			departement.setItems(DepartementManager.getAllDeparts());
+			Employee employee = EmployeeManager.getRow(idEmp);
+			if(employee == null)
+				return;
+			firstName.setText(employee.getFirstName());
+			lastName.setText(employee.getLastName());
+			job.getSelectionModel().select(employee.getJobName());
+			departement.getSelectionModel().select(employee.getDepartementName());
+			email.setText(employee.getEmail());
+			phone.setText(employee.getPhone());
+			address.setText(employee.getAddress());
+			bonus.setText(Integer.toString(employee.getBonus()));
+			//string to date
+			LocalDate date = LocalDate.parse(employee.getHiredDate());
+			hiredDate.setValue(date);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,26 +83,6 @@ public class UpdateEmployeeController implements Initializable {
 	 */
 	public void setId(int idEmp) {
 		this.idEmp = idEmp;
-	}
-	public void loadData(ActionEvent event) throws ParseException{
-		updateButton.setDisable(false);
-		Employee employee = EmployeeManager.getRow(idEmp);
-		if(employee == null)
-			return;
-		firstName.setText(employee.getFirstName());
-		lastName.setText(employee.getLastName());
-		job.getSelectionModel().select(employee.getJobName());
-		departement.getSelectionModel().select(employee.getDepartementName());
-		email.setText(employee.getEmail());
-		phone.setText(employee.getPhone());
-		address.setText(employee.getAddress());
-		bonus.setText(Integer.toString(employee.getBonus()));
-		//string to date
-		LocalDate date = LocalDate.parse(employee.getHiredDate());
-		hiredDate.setValue(date);
-		
-		
-		
 	}
 	public void updateBtn(ActionEvent event) throws Exception{
 		if(firstName.getText().equals("") || lastName.getText().equals("") || email.getText().equals("")

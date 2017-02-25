@@ -1,15 +1,12 @@
 package com.grh.leave;
 
 import java.net.URL;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.LeaveManager;
-import com.grh.DAO.PromotionManager;
 import com.grh.tables.Leave;
 import com.grh.utilities.Checks;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
@@ -24,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class UpdateLeaveController implements Initializable{
@@ -32,32 +30,40 @@ public class UpdateLeaveController implements Initializable{
 	@FXML private JFXComboBox<String> status;
 	@FXML private JFXDatePicker leaveDate;
 	@FXML private JFXTextArea description;
-	@FXML private JFXButton updateButton;
 	private ObservableList<String> statusList;
 	private int idLeave;
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        updateBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("ESCAPE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        cancelBtn(actionEvent);
+	    }
+	}
 	public void initialize(URL location, ResourceBundle resources) {
 
 			statusList = FXCollections.observableArrayList("pending","accepted","rejected");
 			status.setItems(statusList);
-			updateButton.setDisable(true);
+			Leave leave = LeaveManager.getRow(idLeave);
+			if(leave == null)
+				return;
+			firstName.setText(leave.getFirstName());
+			lastName.setText(leave.getLastName());
+			status.getSelectionModel().select(leave.getStatus());
+			description.setText(leave.getDescription());
+			//string to date
+			LocalDate date = LocalDate.parse(leave.getLeaveDate());
+			leaveDate.setValue(date);
 		
 	}
 	public void setId(int idLeave) {
 		this.idLeave = idLeave;
-	}
-	public void loadData(ActionEvent event) throws ParseException{
-		updateButton.setDisable(false);
-		Leave leave = LeaveManager.getRow(idLeave);
-		if(leave == null)
-			return;
-		firstName.setText(leave.getFirstName());
-		lastName.setText(leave.getLastName());
-		status.getSelectionModel().select(leave.getStatus());
-		description.setText(leave.getDescription());
-		//string to date
-		LocalDate date = LocalDate.parse(leave.getLeaveDate());
-		leaveDate.setValue(date);
-		
 	}
 	public void updateBtn(ActionEvent event) throws Exception{
 		if(firstName.getText().equals("") || lastName.getText().equals("") || description.getText().equals("") 

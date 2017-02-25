@@ -6,13 +6,11 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import com.grh.DashboardController;
 import com.grh.DAO.EmployeeManager;
 import com.grh.DAO.EmployeeRestoreManager;
 import com.grh.tables.Employee;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
@@ -38,6 +36,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 public class EmployeesController implements Initializable{
 	@FXML private TableView<Employee> employeeTable;
@@ -75,7 +74,7 @@ public class EmployeesController implements Initializable{
 	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
 	    	updateEmployeeBtn(actionEvent);
 	    }
-	    if(event.getCode().toString().equals("DELETE"))
+	    if(event.getCode().toString().equals("DELETE") && !restore2Btn.isVisible())
 	    {
 	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
 	    	deleteEmployeeBtn(actionEvent);
@@ -195,17 +194,23 @@ public class EmployeesController implements Initializable{
 			dialog.showAndWait();
 		}
 	}
-	
 	public void updateEmployeeBtn(ActionEvent event) throws IOException{
 		Employee employee = employeeTable.getSelectionModel().getSelectedItem();
 		if(employee != null){
 			Stage stage = new Stage();
 			stage.initOwner(((Node)event.getSource()).getScene().getWindow());
 			stage.initModality(Modality.WINDOW_MODAL);
-			FXMLLoader loader = new FXMLLoader();
-			Parent root = loader.load(getClass().getResource("updateEmployee.fxml").openStream());
-			UpdateEmployeeController updateemployeecontroller = (UpdateEmployeeController)loader.getController();
-			updateemployeecontroller.setId(employee.getIdEmp());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("updateEmployee.fxml"));
+			loader.setControllerFactory(new Callback<Class<?>, Object>() {
+				
+				@Override
+				public Object call(Class<?> param) {
+					UpdateEmployeeController controller = new UpdateEmployeeController();
+						controller.setId(employee.getIdEmp());
+			            return controller ;
+				}
+			});
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());
 			stage.setScene(scene);

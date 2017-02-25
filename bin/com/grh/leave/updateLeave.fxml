@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="784.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.leave.UpdateLeaveController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="491.0" prefWidth="784.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.leave.UpdateLeaveController">
    <children>
       <Label layoutX="25.0" layoutY="50.0" text="First Name">
          <font>
@@ -35,7 +35,7 @@
       <JFXTextField fx:id="firstName" layoutX="181.0" layoutY="45.0" />
       <JFXTextField fx:id="lastName" layoutX="561.0" layoutY="45.0" />
       <JFXDatePicker fx:id="leaveDate" editable="false" layoutX="180.0" layoutY="142.0" />
-      <JFXButton buttonType="RAISED" layoutX="553.0" layoutY="405.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
+      <JFXButton buttonType="RAISED" layoutX="464.0" layoutY="405.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
          <font>
             <Font size="18.0" />
          </font>
@@ -43,15 +43,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="121.0" layoutY="405.0" onAction="#loadData" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="LOAD DATA">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="updateButton" buttonType="RAISED" layoutX="343.0" layoutY="405.0" onAction="#updateBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="UPDATE">
+      <JFXButton fx:id="updateButton" buttonType="RAISED" layoutX="188.0" layoutY="405.0" onAction="#updateBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="UPDATE">
          <font>
             <Font size="18.0" />
          </font>

@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.RecruitManager;
+import com.grh.employee.UpdateEmployeeController;
 import com.grh.tables.Recruit;
 
 import javafx.application.Platform;
@@ -28,9 +29,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 public class RecruitmentController implements Initializable{
 	private String connectedUsername;
@@ -46,6 +49,20 @@ public class RecruitmentController implements Initializable{
 	@FXML private TableColumn<Recruit, String> closingDateCol;
 	private ObservableList<Recruit> recruitList;
 	
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	updateRecruitBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("DELETE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	deleteRecruitBtn(actionEvent);
+	    }
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		idRecruitCol.setCellValueFactory(new PropertyValueFactory<>("idRecruit"));
@@ -110,10 +127,17 @@ public class RecruitmentController implements Initializable{
 			Stage stage = new Stage();
 			stage.initOwner(((Node)event.getSource()).getScene().getWindow());
 			stage.initModality(Modality.WINDOW_MODAL);
-			FXMLLoader loader = new FXMLLoader();
-			Parent root = loader.load(getClass().getResource("updateRecruit.fxml").openStream());
-			UpdateRecruitController updateeRecruitController = (UpdateRecruitController)loader.getController();
-			updateeRecruitController.setId(recruit.getIdRecruit());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("updateRecruit.fxml"));
+			loader.setControllerFactory(new Callback<Class<?>, Object>() {
+				
+				@Override
+				public Object call(Class<?> param) {
+					UpdateRecruitController controller = new UpdateRecruitController();
+						controller.setId(recruit.getIdRecruit());
+			            return controller ;
+				}
+			});
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.getIcons().add(new Image("/assets/icon.png"));

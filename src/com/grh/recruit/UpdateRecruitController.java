@@ -24,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class UpdateRecruitController implements Initializable {
@@ -34,15 +35,42 @@ public class UpdateRecruitController implements Initializable {
 	@FXML private JFXComboBox<String> status;
 	@FXML private JFXDatePicker applicationDate;
 	@FXML private JFXDatePicker closingDate;
-	@FXML private JFXButton updateButton;
 	private ObservableList<String> statusList;
 	private int idRecruit;
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        updateBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("ESCAPE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        cancelBtn(actionEvent);
+	    }
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
+			Recruit recruit = RecruitManager.getRow(idRecruit);
+			if(recruit == null)
+				return;
+			firstName.setText(recruit.getFirstName());
+			lastName.setText(recruit.getLastName());
+			job.getSelectionModel().select(recruit.getJobName());
+			email.setText(recruit.getEmail());
+			status.getSelectionModel().select(recruit.getStatus());
+			//format string date
+			LocalDate date = LocalDate.parse(recruit.getApplicationDate());
+			applicationDate.setValue(date);
+			if(recruit.getClosingDate() != null){
+				LocalDate date2 = LocalDate.parse(recruit.getClosingDate());
+				closingDate.setValue(date2);
+			}
 			job.setItems(JobManager.getAllJobs());
 			closingDate.setDisable(true);
-			updateButton.setDisable(true);
 			statusList = FXCollections.observableArrayList("pending","accepted","rejected");
 			status.setItems(statusList);
 			status.setOnAction((e) -> {
@@ -62,25 +90,6 @@ public class UpdateRecruitController implements Initializable {
 	 */
 	public void setId(int idRecruit) {
 		this.idRecruit = idRecruit;
-	}
-	public void loadData(ActionEvent event) throws ParseException{
-		updateButton.setDisable(false);
-		Recruit recruit = RecruitManager.getRow(idRecruit);
-		if(recruit == null)
-			return;
-		firstName.setText(recruit.getFirstName());
-		lastName.setText(recruit.getLastName());
-		job.getSelectionModel().select(recruit.getJobName());
-		email.setText(recruit.getEmail());
-		status.getSelectionModel().select(recruit.getStatus());
-		//format string date
-		LocalDate date = LocalDate.parse(recruit.getApplicationDate());
-		applicationDate.setValue(date);
-		if(recruit.getClosingDate() != null){
-			LocalDate date2 = LocalDate.parse(recruit.getClosingDate());
-			closingDate.setValue(date2);
-		}		
-		
 	}
 	public void updateBtn(ActionEvent event) throws Exception{
 		if(firstName.getText().equals("") || lastName.getText().equals("") || job.getSelectionModel().getSelectedItem()==null
