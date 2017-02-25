@@ -33,6 +33,7 @@ public class DashboardController implements Initializable{
 	@FXML private AnchorPane rightAnchor;
 	@FXML private AnchorPane leftAnchor;
 	@Override
+	/*git test*/
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		Node node=null;
