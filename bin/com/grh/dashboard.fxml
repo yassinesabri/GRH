@@ -51,7 +51,7 @@
                                     </JFXButton>
                                  </children>
                               </Pane>
-                              <Label fx:id="connectedUser" alignment="CENTER" prefHeight="39.0" prefWidth="180.0" style="-fx-border-radius: 2px; -fx-border-style: dashed; -fx-padding: 5px; -fx-border-color: #ffffff;" text="WELCOME,">
+                              <Label fx:id="connectedUser" prefHeight="39.0" prefWidth="156.0" style="-fx-border-radius: 2px; -fx-border-style: dashed; -fx-padding: 5px; -fx-border-color: #ffffff;" text="WELCOME,">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>

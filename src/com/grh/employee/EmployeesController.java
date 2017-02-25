@@ -34,6 +34,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -65,6 +66,21 @@ public class EmployeesController implements Initializable{
 	@FXML private JFXButton trashBtn;
 	@FXML private ImageView backImage;
 	@FXML private ImageView trashImage;
+	
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	updateEmployeeBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("DELETE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	deleteEmployeeBtn(actionEvent);
+	    }
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

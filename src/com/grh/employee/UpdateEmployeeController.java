@@ -23,6 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class UpdateEmployeeController implements Initializable {
@@ -36,6 +37,22 @@ public class UpdateEmployeeController implements Initializable {
 	@FXML private JFXDatePicker hiredDate;
 	@FXML private JFXTextField bonus;
 	@FXML private JFXButton updateButton;
+	
+	@FXML
+	public void buttonPressed(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        updateBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("ESCAPE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        cancelBtn(actionEvent);
+	    }
+	}
+	
 	private int idEmp;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

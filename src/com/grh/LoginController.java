@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -24,6 +25,16 @@ public class LoginController {
 	@FXML JFXTextField usernameField;
 	@FXML JFXPasswordField passwordField;
 	@FXML Label label;
+	
+	@FXML
+	public void buttonPressed(KeyEvent event) throws SQLException
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        login(actionEvent);
+	    }
+	}
 	
 	public void login(ActionEvent event) throws SQLException{
 		

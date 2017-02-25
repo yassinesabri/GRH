@@ -20,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class AddEmployeeController implements Initializable{
@@ -33,6 +34,21 @@ public class AddEmployeeController implements Initializable{
 	@FXML private JFXComboBox<String> departement;
 	@FXML private JFXDatePicker hiredDate;
 	
+	@FXML
+	public void buttonPressed(KeyEvent event) throws SQLException
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        addBtn(actionEvent);
+	    }
+	    if(event.getCode().toString().equals("ESCAPE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        cancelBtn(actionEvent);
+	    }
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -44,6 +60,7 @@ public class AddEmployeeController implements Initializable{
 		}
 		
 	}
+	
 	public void addBtn(ActionEvent event) throws SQLException{
 		if(firstName.getText().equals("") || lastName.getText().equals("") || email.getText().equals("")
 				|| phone.getText().equals("") || address.getText().equals("")

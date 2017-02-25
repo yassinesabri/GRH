@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,6 +29,17 @@ public class SettingsController implements Initializable{
 	@FXML private JFXPasswordField oldPassword;
 	@FXML private JFXPasswordField newPassword;
 	@FXML private JFXPasswordField reNewPassword;
+	
+	@FXML
+	public void buttonPressed(KeyEvent event) throws SQLException
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	        okBtn(actionEvent);
+	    }
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		user.setText(username);
