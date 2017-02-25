@@ -18,14 +18,14 @@
          <children>
             <BorderPane prefHeight="692.0" prefWidth="1244.0">
                <center>
-                  <TableView fx:id="promoTable" onKeyPressed="#buttonPressed" prefHeight="492.0" prefWidth="993.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="promoTable" onKeyPressed="#buttonPressed" prefHeight="517.0" prefWidth="1190.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="idPromCol" prefWidth="61.0" text="ID" />
                       <TableColumn fx:id="firstNameCol" minWidth="0.0" prefWidth="94.0" text="First Name" />
                         <TableColumn fx:id="lastNameCol" prefWidth="100.0" text="Last Name" />
                         <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="99.0" text="Status" />
-                        <TableColumn fx:id="datePromCol" prefWidth="204.0" text="Promotion Date" />
-                        <TableColumn fx:id="descriptionCol" prefWidth="481.0" text="Description" />
+                        <TableColumn fx:id="datePromCol" prefWidth="152.0" text="Promotion Date" />
+                        <TableColumn fx:id="descriptionCol" prefWidth="698.0" text="Description" />
                     </columns>
                   </TableView>
                </center>
@@ -55,15 +55,15 @@
                            </cursor></JFXButton>
                      </children>
                      <padding>
-                        <Insets left="100.0" />
+                        <Insets left="20.0" />
                      </padding>
                   </HBox>
                </bottom>
                <left>
-                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                  <VBox prefHeight="517.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                  <VBox prefHeight="517.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
                </right>
                <top>
                   <VBox prefHeight="90.0" prefWidth="1220.0" BorderPane.alignment="CENTER" />
