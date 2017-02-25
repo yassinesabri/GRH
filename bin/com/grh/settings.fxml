@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="630.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.SettingsController">
    <children>
-      <Label layoutX="109.0" layoutY="45.0" text="Username">
+      <Label layoutX="111.0" layoutY="45.0" text="Username">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -23,24 +23,24 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXTextField fx:id="user" layoutX="283.0" layoutY="35.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
-      <Label layoutX="109.0" layoutY="118.0" text="Old Password">
+      <JFXTextField fx:id="user" layoutX="285.0" layoutY="35.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
+      <Label layoutX="111.0" layoutY="118.0" text="Old Password">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="193.0" text="New Password">
+      <Label layoutX="111.0" layoutY="193.0" text="New Password">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="264.0" text="Retype Password">
+      <Label layoutX="111.0" layoutY="264.0" text="Retype Password">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXPasswordField fx:id="oldPassword" layoutX="283.0" layoutY="106.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
-      <JFXPasswordField fx:id="newPassword" layoutX="283.0" layoutY="180.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
-      <JFXPasswordField fx:id="reNewPassword" layoutX="283.0" layoutY="252.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
+      <JFXPasswordField fx:id="oldPassword" layoutX="285.0" layoutY="106.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
+      <JFXPasswordField fx:id="newPassword" layoutX="285.0" layoutY="180.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
+      <JFXPasswordField fx:id="reNewPassword" layoutX="285.0" layoutY="252.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#buttonPressed" prefHeight="37.0" prefWidth="235.0" />
    </children>
 </Pane>
