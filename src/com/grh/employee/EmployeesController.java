@@ -81,6 +81,16 @@ public class EmployeesController implements Initializable{
 	    }
 	}
 	
+	@FXML
+	public void searchKey(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ENTER"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	search(actionEvent);
+	    }
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//employeeTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);

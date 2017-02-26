@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
@@ -32,6 +33,17 @@ public class DashboardController implements Initializable{
 	@FXML private SplitPane splitPane;
 	@FXML private AnchorPane rightAnchor;
 	@FXML private AnchorPane leftAnchor;
+	
+	@FXML
+	public void reloadEmployee(KeyEvent event) throws Exception
+	{
+	    if(event.getCode().toString().equals("ESCAPE"))
+	    {
+	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
+	    	employeesBtn(actionEvent);
+	    }
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		

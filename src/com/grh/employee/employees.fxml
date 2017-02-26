@@ -98,7 +98,7 @@
                <top>
                   <Pane prefHeight="90.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXTextField fx:id="searchField" layoutX="776.0" layoutY="27.0" maxWidth="162.0" minWidth="162.0" prefHeight="37.0" prefWidth="162.0" promptText="Search Query" />
+                        <JFXTextField fx:id="searchField" layoutX="776.0" layoutY="27.0" maxWidth="162.0" minWidth="162.0" onKeyPressed="#searchKey" prefHeight="37.0" prefWidth="162.0" promptText="Search Query" />
                         <JFXComboBox fx:id="searchBy" layoutX="949.0" layoutY="26.0" prefHeight="31.0" prefWidth="144.0" promptText="Search By" />
                         <JFXButton fx:id="searchBtn" layoutX="1116.0" layoutY="26.0" onAction="#search" prefHeight="31.0" prefWidth="101.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="SEARCH">
                            <cursor>

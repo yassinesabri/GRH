@@ -80,7 +80,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                <AnchorPane fx:id="rightAnchor" minHeight="0.0" minWidth="0.0" prefHeight="692.0" prefWidth="1262.0" style="-fx-background-color: #ffffff;" />
+                <AnchorPane fx:id="rightAnchor" minHeight="0.0" minWidth="0.0" onKeyPressed="#reloadEmployee" prefHeight="692.0" prefWidth="1262.0" style="-fx-background-color: #ffffff;" />
               </items>
             </SplitPane>
          </children>
