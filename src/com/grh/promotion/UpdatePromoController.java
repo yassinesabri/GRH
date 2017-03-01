@@ -50,7 +50,7 @@ public class UpdatePromoController implements Initializable{
 	}
 	public void initialize(URL location, ResourceBundle resources) {
 
-			statusList = FXCollections.observableArrayList("pending","accepted","rejected");
+			statusList = FXCollections.observableArrayList("pending","completed");
 			status.setItems(statusList);
 			Promotion promotion = PromotionManager.getRow(idProm);
 			if(promotion == null)

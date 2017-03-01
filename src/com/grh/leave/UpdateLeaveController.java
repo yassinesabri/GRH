@@ -48,7 +48,7 @@ public class UpdateLeaveController implements Initializable{
 	}
 	public void initialize(URL location, ResourceBundle resources) {
 
-			statusList = FXCollections.observableArrayList("pending","accepted","rejected");
+			statusList = FXCollections.observableArrayList("pending","completed");
 			status.setItems(statusList);
 			Leave leave = LeaveManager.getRow(idLeave);
 			if(leave == null)

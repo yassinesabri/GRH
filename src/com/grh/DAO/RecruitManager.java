@@ -76,8 +76,8 @@ public class RecruitManager {
 	public static boolean insert(Recruit recruit) throws SQLException {
 		
 		recruit.setIdJob(JobManager.getJobId(recruit.getJobName()));
-		String query = "INSERT INTO recruit (firstName,lastName,email,idJob,applicationDate,status,closingDate)"
-				+ " VALUES (?,?,?,?,?,?,?)";
+		String query = "INSERT INTO recruit (firstName,lastName,email,idJob,applicationDate,status,closingDate,cvPath)"
+				+ " VALUES (?,?,?,?,?,?,?,?)";
 		try (
 				Connection conn = DBUtil.getConnection();
 				PreparedStatement stat = conn.prepareStatement(query);
@@ -89,6 +89,7 @@ public class RecruitManager {
 			stat.setString(5, recruit.getApplicationDate());
 			stat.setString(6, recruit.getStatus());
 			stat.setString(7, recruit.getClosingDate());
+			stat.setString(8, recruit.getCvPath());
 			int affected = stat.executeUpdate();
 			//to test if the insert is successful
 			if(affected == 1){
@@ -157,6 +158,29 @@ public class RecruitManager {
 		} catch (SQLException e) {
 			System.err.println(e);
 			return false;
+		}
+	}
+	public static String getCvPath(int idRecruit) {
+		String query ="SELECT * from recruit where idRecruit=?";
+		ResultSet res = null;
+		try (
+				Connection conn = DBUtil.getConnection();
+				PreparedStatement stat = conn.prepareStatement(query);
+				){
+			stat.setInt(1, idRecruit);
+			res = stat.executeQuery();
+			
+			if (res.next()) {
+				String path = res.getString("cvPath");		
+				return path;
+			}
+			else 
+				return null;
+			
+		} catch (SQLException e) {
+			System.err.println("load row failed");
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

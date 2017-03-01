@@ -12,21 +12,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="692.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.vacation.VacationController">
+<ScrollPane prefHeight="692.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.vacation.VacationController">
    <content>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="910.0" style="-fx-background-color: #ffffff;">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1242.0" style="-fx-background-color: #ffffff;">
          <children>
-            <BorderPane prefHeight="692.0" prefWidth="901.0">
+            <BorderPane prefHeight="692.0" prefWidth="1244.0">
                <center>
-                  <TableView fx:id="vacationTable" onKeyPressed="#buttonPressed" prefHeight="517.0" prefWidth="862.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="vacationTable" onKeyPressed="#buttonPressed" prefHeight="517.0" prefWidth="1093.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="idVacCol" prefWidth="61.0" text="ID" />
-                      <TableColumn fx:id="firstNameCol" minWidth="0.0" prefWidth="94.0" text="First Name" />
-                        <TableColumn fx:id="lastNameCol" prefWidth="100.0" text="Last Name" />
-                        <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="99.0" text="Status" />
-                        <TableColumn fx:id="startDateCol" prefWidth="161.0" text="Start Date" />
-                        <TableColumn fx:id="endDateCol" prefWidth="178.0" text="End Date" />
-                        <TableColumn fx:id="remainingCol" prefWidth="178.0" text="Remaining" />
+                      <TableColumn fx:id="firstNameCol" minWidth="0.0" prefWidth="123.0" text="First Name" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="125.0" text="Last Name" />
+                        <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="112.0" text="Status" />
+                        <TableColumn fx:id="startDateCol" prefWidth="201.0" text="Start Date" />
+                        <TableColumn fx:id="endDateCol" prefWidth="217.0" text="End Date" />
+                        <TableColumn fx:id="remainingCol" prefWidth="201.0" text="Remaining" />
                     </columns>
                   </TableView>
                </center>
@@ -56,15 +56,15 @@
                            </cursor></JFXButton>
                      </children>
                      <padding>
-                        <Insets left="20.0" />
+                        <Insets left="100.0" />
                      </padding>
                   </HBox>
                </bottom>
                <left>
-                  <VBox prefHeight="200.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
+                  <VBox prefHeight="517.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <VBox prefHeight="200.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+                  <VBox prefHeight="517.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
                </right>
                <top>
                   <VBox prefHeight="90.0" prefWidth="1220.0" BorderPane.alignment="CENTER" />

@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="494.0" prefWidth="792.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.recruit.UpdateRecruitController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="494.0" prefWidth="827.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.recruit.UpdateRecruitController">
    <children>
       <Label layoutX="25.0" layoutY="50.0" text="First Name">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="434.0" layoutY="50.0" text="Last Name">
+      <Label layoutX="466.0" layoutY="50.0" text="Last Name">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -26,12 +26,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="434.0" layoutY="148.0" text="Email">
+      <Label layoutX="466.0" layoutY="148.0" text="Email">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="434.0" layoutY="255.0" prefHeight="27.0" prefWidth="67.0" text="Status">
+      <Label layoutX="466.0" layoutY="255.0" prefHeight="27.0" prefWidth="67.0" text="Status">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -50,8 +50,8 @@
          </cursor>
       </JFXButton>
       <JFXTextField fx:id="firstName" layoutX="171.0" layoutY="45.0" />
-      <JFXTextField fx:id="lastName" layoutX="548.0" layoutY="45.0" />
-      <JFXTextField fx:id="email" layoutX="544.0" layoutY="143.0" maxWidth="226.0" minWidth="226.0" prefHeight="37.0" prefWidth="226.0" />
+      <JFXTextField fx:id="lastName" layoutX="580.0" layoutY="45.0" />
+      <JFXTextField fx:id="email" layoutX="576.0" layoutY="143.0" maxWidth="226.0" minWidth="226.0" prefHeight="37.0" prefWidth="226.0" />
       <JFXDatePicker fx:id="applicationDate" editable="false" layoutX="171.0" layoutY="250.0" />
       <JFXComboBox fx:id="job" layoutX="179.0" layoutY="147.0" promptText="Select Job" />
       <JFXButton buttonType="RAISED" layoutX="467.0" layoutY="420.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
@@ -62,12 +62,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXComboBox fx:id="status" layoutX="548.0" layoutY="253.0" promptText="Select Status" />
-      <Label layoutX="212.0" layoutY="346.0" prefHeight="27.0" prefWidth="139.0" text="Closing Date">
+      <JFXComboBox fx:id="status" layoutX="580.0" layoutY="253.0" promptText="Select Status" />
+      <Label layoutX="25.0" layoutY="346.0" prefHeight="27.0" prefWidth="139.0" text="Closing Date">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXDatePicker fx:id="closingDate" editable="false" layoutX="346.0" layoutY="341.0" />
+      <JFXDatePicker fx:id="closingDate" editable="false" layoutX="173.0" layoutY="341.0" />
+      <Label layoutX="466.0" layoutY="346.0" prefHeight="27.0" prefWidth="155.0" text="Curriculum Vitae">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="649.0" layoutY="344.0" onAction="#openCv" prefHeight="31.0" prefWidth="101.0" ripplerFill="BLACK" style="-fx-background-color: #80c17e;" text="VIEW" />
    </children>
 </Pane>

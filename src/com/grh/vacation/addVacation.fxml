@@ -8,24 +8,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="460.0" prefWidth="784.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.vacation.AddVacationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="395.0" prefWidth="774.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.vacation.AddVacationController">
    <children>
       <Label layoutX="25.0" layoutY="50.0" text="First Name">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="402.0" layoutY="50.0" text="Last Name">
+      <Label layoutX="402.0" layoutY="48.0" text="Last Name">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="201.0" prefHeight="27.0" prefWidth="155.0" text="Start Date">
+      <Label layoutX="25.0" layoutY="157.0" prefHeight="27.0" prefWidth="155.0" text="Start Date">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="176.0" layoutY="392.0" onAction="#addBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="ADD">
+      <JFXButton buttonType="RAISED" layoutX="199.0" layoutY="280.0" onAction="#addBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="ADD">
          <font>
             <Font size="18.0" />
          </font>
@@ -33,10 +33,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXTextField fx:id="firstName" layoutX="179.0" layoutY="45.0" />
-      <JFXTextField fx:id="lastName" layoutX="564.0" layoutY="45.0" />
-      <JFXDatePicker fx:id="startDate" editable="false" layoutX="176.0" layoutY="198.0" />
-      <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="392.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
+      <JFXTextField fx:id="firstName" layoutX="160.0" layoutY="38.0" />
+      <JFXTextField fx:id="lastName" layoutX="532.0" layoutY="34.0" />
+      <JFXDatePicker fx:id="startDate" editable="false" layoutX="157.0" layoutY="147.0" />
+      <JFXButton buttonType="RAISED" layoutX="483.0" layoutY="280.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
          <font>
             <Font size="18.0" />
          </font>
@@ -44,11 +44,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="402.0" layoutY="201.0" prefHeight="27.0" prefWidth="155.0" text="End Date">
+      <Label layoutX="402.0" layoutY="154.0" prefHeight="27.0" prefWidth="155.0" text="End Date">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXDatePicker fx:id="endDate" editable="false" layoutX="564.0" layoutY="198.0" />
+      <JFXDatePicker fx:id="endDate" editable="false" layoutX="532.0" layoutY="144.0" />
    </children>
 </Pane>

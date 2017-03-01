@@ -10,11 +10,12 @@ public class Recruit {
 	private String applicationDate;
 	private String status;
 	private String closingDate;
+	private String cvPath;
 	public Recruit(){
 		
 	}
 	public Recruit(int idRecruit, int idJob, String firstName, String lastName, String email, String jobName,
-			String applicationDate, String status, String closingDate) {
+			String applicationDate, String status, String closingDate, String cvPath) {
 		super();
 		this.idRecruit = idRecruit;
 		this.idJob = idJob;
@@ -25,6 +26,7 @@ public class Recruit {
 		this.applicationDate = applicationDate;
 		this.status = status;
 		this.closingDate = closingDate;
+		this.cvPath = cvPath;
 	}
 	/**
 	 * @return the idRecruit
@@ -134,6 +136,19 @@ public class Recruit {
 	public void setClosingDate(String closingDate) {
 		this.closingDate = closingDate;
 	}
+	/**
+	 * @return the cvPath
+	 */
+	public String getCvPath() {
+		return cvPath;
+	}
+	/**
+	 * @param cvPath the cvPath to set
+	 */
+	public void setCvPath(String cvPath) {
+		this.cvPath = cvPath;
+	}
+	
 	
 	
 	

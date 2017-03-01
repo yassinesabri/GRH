@@ -1,5 +1,8 @@
 package com.grh.recruit;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -163,5 +166,25 @@ public class UpdateRecruitController implements Initializable {
 	public void cancelBtn(ActionEvent event){
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
+	}
+	@SuppressWarnings("unused")
+	public void openCv(ActionEvent event) throws IOException{
+		try {
+			String path = RecruitManager.getCvPath(idRecruit);
+			File file = new File(path);
+			Desktop desktop = Desktop.getDesktop();
+			if(file != null)
+				desktop.open(file);
+		} catch (Exception e) {
+			Alert dialog = new Alert(AlertType.WARNING);
+			dialog.setTitle("Error");
+			dialog.setHeaderText(null);
+			dialog.setContentText("Cv Path is not found");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+			dialog.showAndWait();
+		}
+			
 	}
 }
