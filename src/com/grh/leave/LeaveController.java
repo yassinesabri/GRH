@@ -79,13 +79,13 @@ public class LeaveController implements Initializable {
 		Stage stage = new Stage();
 		stage.initOwner(((Node)event.getSource()).getScene().getWindow());
 		stage.initModality(Modality.WINDOW_MODAL);
-		Parent root = FXMLLoader.load(getClass().getResource("addLeave.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("selectEmployee.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.getIcons().add(new Image("/assets/icon.png"));
 		stage.setResizable(false);
-		stage.setTitle("GRH - Termination : Add File");
+		stage.setTitle("GRH - Termination : Select Employee");
 		stage.show();
 		//wait the addEmployee stage closing event to refresh table
 		stage.setOnHiding(new EventHandler<WindowEvent>() {

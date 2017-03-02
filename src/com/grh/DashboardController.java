@@ -132,7 +132,7 @@ public class DashboardController implements Initializable{
 		}
 		rightAnchor.getChildren().setAll(node);
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		stage.setTitle("GRH - Dashboard : Leave");
+		stage.setTitle("GRH - Dashboard : Dismissal");
 	}
 	
 	public void vacationBtn(ActionEvent event){

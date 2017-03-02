@@ -1,8 +1,12 @@
 package com.grh.vacation;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
+
 import com.grh.DAO.EmployeeManager;
 import com.grh.DAO.VacationManager;
+import com.grh.tables.Employee;
 import com.grh.tables.Vacation;
 import com.grh.utilities.Checks;
 import com.jfoenix.controls.JFXDatePicker;
@@ -10,6 +14,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -17,11 +22,12 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class AddVacationController{
+public class AddVacationController implements Initializable{
 	@FXML private JFXTextField firstName;
 	@FXML private JFXTextField lastName;
 	@FXML private JFXDatePicker startDate;
 	@FXML private JFXDatePicker endDate;
+	private int idEmp;
 	@FXML
 	public void buttonPressed(KeyEvent event) throws SQLException
 	{
@@ -36,7 +42,16 @@ public class AddVacationController{
 	        cancelBtn(actionEvent);
 	    }
 	}
-	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Employee employee = EmployeeManager.getRow(idEmp);
+		firstName.setText(employee.getFirstName());
+		lastName.setText(employee.getLastName());
+		
+	}
+	public void setIdEmp(int idEmp){
+		this.idEmp = idEmp;
+	}
 	public void addBtn(ActionEvent event) throws SQLException{
 		if(firstName.getText().equals("") || lastName.getText().equals("") || startDate.getValue()==null 
 				|| startDate.getValue()==null ){
@@ -104,4 +119,5 @@ public class AddVacationController{
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
 	}
+	
 }

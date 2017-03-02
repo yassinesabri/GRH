@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.grh.DAO.EmployeeManager;
 import com.grh.DAO.LeaveManager;
+import com.grh.tables.Employee;
 import com.grh.tables.Leave;
 import com.grh.utilities.Checks;
 import com.jfoenix.controls.JFXComboBox;
@@ -32,6 +33,7 @@ public class AddLeaveController implements Initializable{
 	@FXML private JFXDatePicker leaveDate;
 	@FXML private JFXTextArea description;
 	private ObservableList<String> statusList;
+	private int idEmp;
 	@FXML
 	public void buttonPressed(KeyEvent event) throws SQLException
 	{
@@ -46,11 +48,17 @@ public class AddLeaveController implements Initializable{
 	        cancelBtn(actionEvent);
 	    }
 	}
+	public void setIdEmp(int idEmp){
+		this.idEmp = idEmp;
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		statusList = FXCollections.observableArrayList("pending");
 		status.setItems(statusList);
 		status.getSelectionModel().select("pending");
+		Employee employee = EmployeeManager.getRow(idEmp);
+		firstName.setText(employee.getFirstName());
+		lastName.setText(employee.getLastName());
 		
 	}
 	public void addBtn(ActionEvent event) throws SQLException{

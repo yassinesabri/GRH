@@ -60,7 +60,6 @@ public class AddEmployeeController implements Initializable{
 		}
 		
 	}
-	
 	public void addBtn(ActionEvent event) throws SQLException{
 		if(firstName.getText().equals("") || lastName.getText().equals("") || email.getText().equals("")
 				|| phone.getText().equals("") || address.getText().equals("")
