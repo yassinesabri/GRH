@@ -2,7 +2,6 @@ package com.grh.employee;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -11,7 +10,6 @@ import com.grh.DAO.EmployeeManager;
 import com.grh.DAO.JobManager;
 import com.grh.tables.Employee;
 import com.grh.utilities.Checks;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -144,6 +142,7 @@ public class UpdateEmployeeController implements Initializable {
 			return;
 		}
 		Employee employee = new Employee();
+		@SuppressWarnings("unused")
 		LocalDate date = hiredDate.getValue();
 		employee.setIdEmp(idEmp);
 		employee.setFirstName(firstName.getText());

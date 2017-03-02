@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.grh.tables.Leave;
-import com.grh.tables.Promotion;
 import com.grh.utilities.DBUtil;
 
 import javafx.collections.FXCollections;

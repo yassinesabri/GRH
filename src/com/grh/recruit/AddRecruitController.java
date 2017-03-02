@@ -119,13 +119,14 @@ public class AddRecruitController implements Initializable{
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
 	}
+	@SuppressWarnings("unused")
 	public void loadCv(ActionEvent event){
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File(".\\cv"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PDF files","*.pdf"),new ExtensionFilter("Doc files","*.doc*"));
 		File selected = fc.showOpenDialog(null);
-		cvPath=".\\cv\\"+selected.getName();
 		if(selected != null){
+			cvPath=".\\cv\\"+selected.getName();
 			cvName.setText(selected.getName());
 		}else
 			System.out.println("File not valid");

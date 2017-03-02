@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.EmployeeManager;
-import com.grh.DAO.LeaveManager;
-import com.grh.employee.UpdateEmployeeController;
-import com.grh.leave.AddLeaveController;
 import com.grh.tables.Employee;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;

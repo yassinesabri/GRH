@@ -1,14 +1,12 @@
 package com.grh.promotion;
 
 import java.net.URL;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.PromotionManager;
 import com.grh.tables.Promotion;
 import com.grh.utilities.Checks;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;

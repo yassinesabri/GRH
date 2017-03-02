@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -13,7 +12,6 @@ import com.grh.DAO.JobManager;
 import com.grh.DAO.RecruitManager;
 import com.grh.tables.Recruit;
 import com.grh.utilities.Checks;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -167,7 +165,6 @@ public class UpdateRecruitController implements Initializable {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
 	}
-	@SuppressWarnings("unused")
 	public void openCv(ActionEvent event) throws IOException{
 		try {
 			String path = RecruitManager.getCvPath(idRecruit);

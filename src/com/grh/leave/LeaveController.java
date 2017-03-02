@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.LeaveManager;
-import com.grh.employee.UpdateEmployeeController;
 import com.grh.tables.Leave;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -21,10 +20,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -133,7 +132,7 @@ public class LeaveController implements Initializable {
 			stage.setScene(scene);
 			stage.getIcons().add(new Image("/assets/icon.png"));
 			stage.setResizable(false);
-			stage.setTitle("GRH - Termination : Update File");
+			stage.setTitle("GRH - Dismissal : Update File");
 			stage.show();
 			//wait the updateEmployee stage closing event to refresh table
 			stage.setOnHiding(new EventHandler<WindowEvent>() {

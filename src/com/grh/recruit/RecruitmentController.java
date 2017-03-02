@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.RecruitManager;
-import com.grh.employee.UpdateEmployeeController;
 import com.grh.tables.Recruit;
 
 import javafx.application.Platform;
@@ -36,6 +35,7 @@ import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class RecruitmentController implements Initializable{
+	@SuppressWarnings("unused")
 	private String connectedUsername;
 	@FXML private Label connectedUser;
 	@FXML private TableView<Recruit> recruitTable;
