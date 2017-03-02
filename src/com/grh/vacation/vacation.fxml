@@ -33,21 +33,21 @@
                <bottom>
                   <HBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="1134.0" spacing="40.0" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXButton buttonType="RAISED" onAction="#addVacationBtn" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #80c17e;" text="ADD">
+                        <JFXButton buttonType="RAISED" onAction="#addVacationBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="ADD">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#updateVacationBtn" prefHeight="31.0" prefWidth="124.0" style="-fx-background-color: #80c17e;" text="UPDATE">
+                        <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#updateVacationBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="UPDATE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="75.0" layoutY="10.0" onAction="#deleteVacationBtn" prefHeight="31.0" prefWidth="130.0" style="-fx-background-color: #80c17e;" text="DELETE">
+                        <JFXButton buttonType="RAISED" layoutX="75.0" layoutY="10.0" onAction="#deleteVacationBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #80c17e;" text="DELETE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
