@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.grh.DAO.EmployeeManager;
+import com.grh.DAO.LeaveManager;
 import com.grh.tables.Employee;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -21,8 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -74,47 +77,60 @@ public class SelectEmployeeController implements Initializable {
 		searchBy.setItems(searchItems);
 		
 	}
-	public void selectBtn(ActionEvent event) throws IOException{
+	public void selectBtn(ActionEvent event) throws IOException, SQLException{
 		Employee employee = employeeTable.getSelectionModel().getSelectedItem();
-		Stage stage = new Stage();
-		stage.initOwner(((Node)event.getSource()).getScene().getWindow());
-		stage.initModality(Modality.WINDOW_MODAL);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("addLeave.fxml"));
-		loader.setControllerFactory(new Callback<Class<?>, Object>() {
-			
-			@Override
-			public Object call(Class<?> param) {
-				AddLeaveController controller = new AddLeaveController();
-					controller.setIdEmp(employee.getIdEmp());
-		            return controller ;
-			}
-		});
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());
-		stage.setScene(scene);
-		stage.getIcons().add(new Image("/assets/icon.png"));
-		stage.setResizable(false);
-		stage.setTitle("GRH - Dismissal : Add File");
-		stage.show();
-		Stage stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-		stage2.setOpacity(0);
-		//wait the addEmployee stage closing event to refresh table
-		stage.setOnHiding(new EventHandler<WindowEvent>() {
+		if(!LeaveManager.checkRecord(employee.getFirstName(), employee.getLastName())){
+			Stage stage = new Stage();
+			stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+			stage.initModality(Modality.WINDOW_MODAL);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("addLeave.fxml"));
+			loader.setControllerFactory(new Callback<Class<?>, Object>() {
+				
+				@Override
+				public Object call(Class<?> param) {
+					AddLeaveController controller = new AddLeaveController();
+						controller.setIdEmp(employee.getIdEmp());
+			            return controller ;
+				}
+			});
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());
+			stage.setScene(scene);
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			stage.setResizable(false);
+			stage.setTitle("GRH - Dismissal : Add File");
+			stage.show();
+			Stage stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage2.setOpacity(0);
+			//wait the addEmployee stage closing event to refresh table
+			stage.setOnHiding(new EventHandler<WindowEvent>() {
 
-            @Override
-            public void handle(WindowEvent e) {
-                Platform.runLater(new Runnable() {
+	            @Override
+	            public void handle(WindowEvent e) {
+	                Platform.runLater(new Runnable() {
 
-                    @Override
-                    public void run() {
-                    	//Stage stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    	stage2.close();
-               
-                    }
-                });
-            }
-        });
+	                    @Override
+	                    public void run() {
+	                    	//Stage stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
+	                    	stage2.close();
+	               
+	                    }
+	                });
+	            }
+	        });
+		}
+		else{
+			Alert dialog = new Alert(AlertType.WARNING);
+			dialog.setTitle("Error");
+			dialog.setHeaderText(null);
+			dialog.setContentText("This employee is already on dismissal");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+			dialog.showAndWait();
+		}
+		
 	}
 	public void search(ActionEvent event){
 		if(!searchField.getText().equals("") && searchBy.getSelectionModel().getSelectedItem() != null){

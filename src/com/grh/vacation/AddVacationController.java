@@ -46,8 +46,7 @@ public class AddVacationController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		Employee employee = EmployeeManager.getRow(idEmp);
 		firstName.setText(employee.getFirstName());
-		lastName.setText(employee.getLastName());
-		
+		lastName.setText(employee.getLastName());		
 	}
 	public void setIdEmp(int idEmp){
 		this.idEmp = idEmp;
@@ -67,7 +66,7 @@ public class AddVacationController implements Initializable{
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);
-			dialog.setContentText("Invalid Date Format");
+			dialog.setContentText("Invalid start Date");
 			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
 			stage.getIcons().add(new Image("/assets/icon.png"));
 			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
@@ -79,7 +78,7 @@ public class AddVacationController implements Initializable{
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);
-			dialog.setContentText("Invalid Date Format");
+			dialog.setContentText("Invalid Date chronology");
 			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
 			stage.getIcons().add(new Image("/assets/icon.png"));
 			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
@@ -87,7 +86,18 @@ public class AddVacationController implements Initializable{
 			return;
 		}
 		
-		if(VacationManager.checkRow(firstName.getText(), lastName.getText())){
+		if(!VacationManager.checkRow(firstName.getText(), lastName.getText())){
+			Alert dialog = new Alert(AlertType.WARNING);
+			dialog.setTitle("Error");
+			dialog.setHeaderText(null);
+			dialog.setContentText("No employee with this name");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+			dialog.showAndWait();
+			return;
+		}
+		if(!VacationManager.checkInvalidVacation(firstName.getText(), lastName.getText())){	
 			Vacation vacation = new Vacation();
 			vacation.setIdEmp(EmployeeManager.getEmployeeId(firstName.getText(), lastName.getText()));
 			vacation.setFirstName(firstName.getText());
@@ -106,7 +116,7 @@ public class AddVacationController implements Initializable{
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);
-			dialog.setContentText("No Employee with this name");
+			dialog.setContentText("This employee is on leave or has vacation pending!");
 			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
 			stage.getIcons().add(new Image("/assets/icon.png"));
 			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());

@@ -116,50 +116,64 @@ public class VacationController implements Initializable {
 	public void updateVacationBtn(ActionEvent event) throws IOException{
 		Vacation vacation = vacationTable.getSelectionModel().getSelectedItem();
 		if(vacation != null){
-			Stage stage = new Stage();
-			stage.initOwner(((Node)event.getSource()).getScene().getWindow());
-			stage.initModality(Modality.WINDOW_MODAL);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("updateVacation.fxml"));
-			loader.setControllerFactory(new Callback<Class<?>, Object>() {
+			if(vacation.getStatus().equals("pending")){
+				Stage stage = new Stage();
+				stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+				stage.initModality(Modality.WINDOW_MODAL);
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("updateVacation.fxml"));
+				loader.setControllerFactory(new Callback<Class<?>, Object>() {
+					
+					@Override
+					public Object call(Class<?> param) {
+						UpdateVacationController controller = new UpdateVacationController();
+							controller.setId(vacation.getIdVac());
+				            return controller ;
+					}
+				});
+				Parent root = loader.load();
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.getIcons().add(new Image("/assets/icon.png"));
+				stage.setResizable(false);
+				stage.setTitle("GRH - Termination : Update File");
+				stage.show();
+				//wait the updateEmployee stage closing event to refresh table
+				stage.setOnHiding(new EventHandler<WindowEvent>() {
+
+		            @Override
+		            public void handle(WindowEvent event) {
+		                Platform.runLater(new Runnable() {
+
+		                	 @Override
+		                     public void run() {
+		                		 if(!vacationList.isEmpty()){
+		                			 vacationList=null;
+		                			 vacationList = FXCollections.observableArrayList();
+		                 		}
+		                 		try {
+		                 			vacationList = VacationManager.getAllRows();
+		     					} catch (SQLException e) {
+		     						e.printStackTrace();
+		     					}
+		                 		if(vacationList != null)
+		                 			vacationTable.setItems(vacationList);
+		                     }
+		                });
+		            }
+		        });
 				
-				@Override
-				public Object call(Class<?> param) {
-					UpdateVacationController controller = new UpdateVacationController();
-						controller.setId(vacation.getIdVac());
-			            return controller ;
-				}
-			});
-			Parent root = loader.load();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.getIcons().add(new Image("/assets/icon.png"));
-			stage.setResizable(false);
-			stage.setTitle("GRH - Termination : Update File");
-			stage.show();
-			//wait the updateEmployee stage closing event to refresh table
-			stage.setOnHiding(new EventHandler<WindowEvent>() {
-
-	            @Override
-	            public void handle(WindowEvent event) {
-	                Platform.runLater(new Runnable() {
-
-	                	 @Override
-	                     public void run() {
-	                		 if(!vacationList.isEmpty()){
-	                			 vacationList=null;
-	                			 vacationList = FXCollections.observableArrayList();
-	                 		}
-	                 		try {
-	                 			vacationList = VacationManager.getAllRows();
-	     					} catch (SQLException e) {
-	     						e.printStackTrace();
-	     					}
-	                 		if(vacationList != null)
-	                 			vacationTable.setItems(vacationList);
-	                     }
-	                });
-	            }
-	        });
+			}
+			else{
+				Alert dialog = new Alert(AlertType.WARNING);
+				dialog.setTitle("Error");
+				dialog.setHeaderText(null);
+				dialog.setContentText("Only pending leaves can be modified");
+				Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+				stage.getIcons().add(new Image("/assets/icon.png"));
+				dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+				dialog.showAndWait();
+			}
+			
 		}
 		else{
 			Alert dialog = new Alert(AlertType.WARNING);

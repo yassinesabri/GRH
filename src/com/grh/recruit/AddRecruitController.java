@@ -100,19 +100,32 @@ public class AddRecruitController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		Recruit recruit = new Recruit();
-		recruit.setFirstName(firstName.getText());
-		recruit.setLastName(lastName.getText());
-		recruit.setJobName(job.getSelectionModel().getSelectedItem().toString());
-		recruit.setStatus(status.getSelectionModel().getSelectedItem().toString());
-		recruit.setEmail(email.getText());
-		recruit.setApplicationDate(applicationDate.getValue().toString());
-		recruit.setCvPath(cvPath);
-		if(RecruitManager.insert(recruit)){
-			System.out.println("Insert Done !");
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			stage.close();
+		if(!RecruitManager.checkRecord(firstName.getText(), lastName.getText())){
+			Recruit recruit = new Recruit();
+			recruit.setFirstName(firstName.getText());
+			recruit.setLastName(lastName.getText());
+			recruit.setJobName(job.getSelectionModel().getSelectedItem().toString());
+			recruit.setStatus(status.getSelectionModel().getSelectedItem().toString());
+			recruit.setEmail(email.getText());
+			recruit.setApplicationDate(applicationDate.getValue().toString());
+			recruit.setCvPath(cvPath);
+			if(RecruitManager.insert(recruit)){
+				System.out.println("Insert Done !");
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.close();
+			}
 		}
+		else{
+			Alert dialog = new Alert(AlertType.WARNING);
+			dialog.setTitle("Error");
+			dialog.setHeaderText(null);
+			dialog.setContentText("This Person is already applied");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+			dialog.showAndWait();
+		}
+		
 	}
 	
 	public void cancelBtn(ActionEvent event){

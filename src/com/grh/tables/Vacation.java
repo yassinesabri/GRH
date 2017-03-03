@@ -68,10 +68,14 @@ public class Vacation {
 	}
 
 	public void setStatus() {
-		if(Checks.isLessThanCurrentDate(startDate))
+		if(this.getRemaining()!=0){
+		if(Checks.isLessThanCurrentDate(startDate) )
 		this.status = "leave";
 		else
 		this.status = "pending";
+		}
+		else
+			this.status= "done";
 	}
 
 	public String getStartDate() {
@@ -97,7 +101,10 @@ public class Vacation {
 	public void setRemaining() {
 		LocalDate now = LocalDate.now();
 		LocalDate end = LocalDate.parse(this.endDate);
+		if(ChronoUnit.DAYS.between(now, end)>=0)
 		this.remaining = ChronoUnit.DAYS.between(now, end);
+		else
+			this.remaining = 0;
 	}
 		
 }

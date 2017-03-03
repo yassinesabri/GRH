@@ -72,7 +72,29 @@ public class RecruitManager {
 		}
 		
 	}
-	
+	public static boolean checkRecord(String firstName,String lastName) {
+		String query ="SELECT * from `recruit` where firstName=? and lastName=?";
+		ResultSet res = null;
+		try (
+				Connection conn = DBUtil.getConnection();
+				PreparedStatement stat = conn.prepareStatement(query);
+				){
+			stat.setString(1, firstName);
+			stat.setString(2, lastName);
+			res = stat.executeQuery();
+			
+			if (res.next()) {	
+				return true;
+			}
+			else 
+				return false;
+			
+		} catch (SQLException e) {
+			System.err.println("check row failed");
+			e.printStackTrace();
+			return false;
+		}
+	}
 	public static boolean insert(Recruit recruit) throws SQLException {
 		
 		recruit.setIdJob(JobManager.getJobId(recruit.getJobName()));

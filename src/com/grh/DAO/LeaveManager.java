@@ -65,6 +65,30 @@ public class LeaveManager {
 			return false;
 		}
 	}
+	public static boolean checkRecord(String firstName,String lastName) throws SQLException {
+		int id = EmployeeManager.getEmployeeId(firstName, lastName);
+		String query ="SELECT * from `leave` where idEmp=?";
+			ResultSet res = null;
+			try (
+					Connection conn = DBUtil.getConnection();
+					PreparedStatement stat = conn.prepareStatement(query);
+					){
+				stat.setInt(1, id);
+				res = stat.executeQuery();
+				
+				if (res.next()) {	
+					return true;
+				}
+				else 
+					return false;
+				
+			} catch (SQLException e) {
+				System.err.println("check row failed");
+				e.printStackTrace();
+				return false;
+			}
+		
+	}
 	
 	public static ObservableList<Leave> getAllRows() throws SQLException {
 		ObservableList<Leave> list = FXCollections.observableArrayList();

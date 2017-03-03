@@ -29,9 +29,9 @@ public class VacationManager {
 				vacation.setFirstName(res.getString("firstName"));
 				vacation.setLastName(res.getString("lastName"));
 				vacation.setStartDate(res.getString("startDate"));
-				vacation.setStatus();
 				vacation.setEndDate(res.getString("endDate"));	
 				vacation.setRemaining();
+				vacation.setStatus();
 				return vacation;
 			}
 			else 
@@ -67,6 +67,34 @@ public class VacationManager {
 		}
 	}
 	
+	public static boolean checkInvalidVacation(String firstName,String lastName) throws SQLException {
+		int id = EmployeeManager.getEmployeeId(firstName, lastName);
+		String query ="SELECT * from `vacation` where idEmp=?";
+		ResultSet res = null;
+		try (
+				Connection conn = DBUtil.getConnection();
+				PreparedStatement stat = conn.prepareStatement(query);
+				){
+			stat.setInt(1, id);
+			res = stat.executeQuery();
+			
+			if (res.next()) {	
+				Vacation vac = new Vacation();
+				vac = getRow(res.getObject("idVac",Integer.class));
+				vac.setRemaining();
+				vac.setStatus();
+				if(!vac.getStatus().equals("done"))
+				return true;
+			}
+				return false;
+			
+		} catch (SQLException e) {
+			System.err.println("check vacation");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static ObservableList<Vacation> getAllRows() throws SQLException {
 		ObservableList<Vacation> list = FXCollections.observableArrayList();
 		String sql = "SELECT * from `vacation`,`employee` where vacation.idEmp=employee.idEmp ORDER BY vacation.idVac ASC";
@@ -82,9 +110,9 @@ public class VacationManager {
 				vacation.setFirstName(res.getString("firstName"));
 				vacation.setLastName(res.getString("lastName"));
 				vacation.setStartDate(res.getString("startDate"));
-				vacation.setStatus();
 				vacation.setEndDate(res.getString("endDate"));	
 				vacation.setRemaining();
+				vacation.setStatus();
 				list.add(vacation);
 			}
 			return list;
