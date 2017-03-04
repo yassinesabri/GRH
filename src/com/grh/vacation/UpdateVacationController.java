@@ -1,19 +1,15 @@
-package com.grh.recruit;
+package com.grh.vacation;
 
 import java.net.URL;
-import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import com.grh.DAO.JobManager;
-import com.grh.DAO.RecruitManager;
-import com.grh.tables.Recruit;
+import com.grh.DAO.VacationManager;
+import com.grh.tables.Vacation;
 import com.grh.utilities.Checks;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,22 +20,19 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class AddRecruitController implements Initializable{
-
+public class UpdateVacationController implements Initializable{
 	@FXML private JFXTextField firstName;
 	@FXML private JFXTextField lastName;
-	@FXML private JFXTextField email;
-	@FXML private JFXComboBox<String> job;
-	@FXML private JFXComboBox<String> status;
-	@FXML private JFXDatePicker applicationDate;
-	private ObservableList<String> statusList;
+	@FXML private JFXDatePicker startDate;
+	@FXML private JFXDatePicker endDate;
+	private int idVac;
 	@FXML
-	public void buttonPressed(KeyEvent event) throws SQLException
+	public void buttonPressed(KeyEvent event) throws Exception
 	{
 	    if(event.getCode().toString().equals("ENTER"))
 	    {
 	    	ActionEvent actionEvent = new ActionEvent(event.getSource(),event.getTarget());
-	        addBtn(actionEvent);
+	        updateBtn(actionEvent);
 	    }
 	    if(event.getCode().toString().equals("ESCAPE"))
 	    {
@@ -47,22 +40,24 @@ public class AddRecruitController implements Initializable{
 	        cancelBtn(actionEvent);
 	    }
 	}
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		try {
-			job.setItems(JobManager.getAllJobs());
-			statusList = FXCollections.observableArrayList("pending");
-			status.setItems(statusList);
-			status.getSelectionModel().select("pending");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+			Vacation vacation = VacationManager.getRow(idVac);
+			if(vacation == null)
+				return;
+			firstName.setText(vacation.getFirstName());
+			lastName.setText(vacation.getLastName());
+			//string to date
+			LocalDate date = LocalDate.parse(vacation.getStartDate());
+			startDate.setValue(date);
+			LocalDate date1 = LocalDate.parse(vacation.getEndDate());
+			endDate.setValue(date1);
 	}
-	public void addBtn(ActionEvent event) throws SQLException{
-		if(firstName.getText().equals("") || lastName.getText().equals("") || job.getSelectionModel().getSelectedItem()==null
-				|| email.getText().equals("") || applicationDate.getValue()==null){
+	public void setId(int idVac) {
+		this.idVac = idVac;
+	}
+	public void updateBtn(ActionEvent event) throws Exception{
+		if(firstName.getText().equals("") || lastName.getText().equals("") || endDate.getValue()==null 
+				|| startDate.getValue()==null){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);
@@ -73,18 +68,7 @@ public class AddRecruitController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		if(!Checks.isValidEmail(email.getText())){
-			Alert dialog = new Alert(AlertType.WARNING);
-			dialog.setTitle("Error");
-			dialog.setHeaderText(null);
-			dialog.setContentText("Invalid Email Format");
-			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
-			stage.getIcons().add(new Image("/assets/icon.png"));
-			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
-			dialog.showAndWait();
-			return;
-		}
-		if(!Checks.isLessThanCurrentDate(applicationDate.getValue().toString())){
+		if(Checks.isLessThanCurrentDate(startDate.getValue().toString())){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);
@@ -95,23 +79,45 @@ public class AddRecruitController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		Recruit recruit = new Recruit();
-		recruit.setFirstName(firstName.getText());
-		recruit.setLastName(lastName.getText());
-		recruit.setJobName(job.getSelectionModel().getSelectedItem().toString());
-		recruit.setStatus(status.getSelectionModel().getSelectedItem().toString());
-		recruit.setEmail(email.getText());
-		recruit.setApplicationDate(applicationDate.getValue().toString());
-		if(RecruitManager.insert(recruit)){
-			System.out.println("Insert Done !");
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			stage.close();
+		if(!Checks.isLessThanStartDate(endDate.getValue().toString(),startDate.getValue().toString())){
+			Alert dialog = new Alert(AlertType.WARNING);
+			dialog.setTitle("Error");
+			dialog.setHeaderText(null);
+			dialog.setContentText("Invalid Date Format");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+			dialog.showAndWait();
+			return;
 		}
+		Vacation vacation = new Vacation();
+		vacation.setIdVac(idVac);
+		vacation.setEndDate(endDate.getValue().toString());
+		vacation.setStartDate(startDate.getValue().toString());
+		vacation.setStatus();
+		vacation.setRemaining();
+		if(VacationManager.checkRow(firstName.getText(), lastName.getText())){
+			if(VacationManager.update(vacation)){
+				System.out.println("Update Done !");
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.close();
+			}
+		}
+		else{
+			Alert dialog = new Alert(AlertType.WARNING);
+			dialog.setTitle("Error");
+			dialog.setHeaderText(null);
+			dialog.setContentText("No Employee with this name");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("/assets/icon.png"));
+			dialog.initOwner((Stage)((Node)event.getSource()).getScene().getWindow());
+			dialog.showAndWait();
+		}
+		
 	}
 	
 	public void cancelBtn(ActionEvent event){
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
 	}
-
 }

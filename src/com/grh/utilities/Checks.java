@@ -34,7 +34,7 @@ public class Checks {
         return m.matches();
   
 	}
-	public static boolean isLessThenCurrentDate(String date){
+	public static boolean isLessThanCurrentDate(String date){
 		Date now = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String nowString = formatter.format(now);
@@ -42,6 +42,13 @@ public class Checks {
 		LocalDate testDate = LocalDate.parse(date);
 		//System.out.println(currentDate.compareTo(testDate));
 		return currentDate.compareTo(testDate) >= 0;
+	}
+	
+	public static boolean isLessThanStartDate(String start,String end){
+		LocalDate startDate = LocalDate.parse(start);
+		LocalDate endDate = LocalDate.parse(end);
+		//System.out.println(currentDate.compareTo(testDate));
+		return startDate.compareTo(endDate) >= 0;
 	}
 
 }

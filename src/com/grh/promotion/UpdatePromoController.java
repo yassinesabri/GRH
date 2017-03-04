@@ -80,7 +80,7 @@ public class UpdatePromoController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		if(!Checks.isLessThenCurrentDate(promoDate.getValue().toString())){
+		if(Checks.isLessThanCurrentDate(promoDate.getValue().toString())){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);

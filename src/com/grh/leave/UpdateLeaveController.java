@@ -78,7 +78,7 @@ public class UpdateLeaveController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		if(!Checks.isLessThenCurrentDate(leaveDate.getValue().toString())){
+		if(Checks.isLessThanCurrentDate(leaveDate.getValue().toString())){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);

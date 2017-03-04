@@ -6,9 +6,7 @@ import java.util.ResourceBundle;
 
 import com.grh.DAO.EmployeeManager;
 import com.grh.DAO.LeaveManager;
-import com.grh.DAO.PromotionManager;
 import com.grh.tables.Leave;
-import com.grh.tables.Promotion;
 import com.grh.utilities.Checks;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -66,7 +64,7 @@ public class AddLeaveController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		if(!Checks.isLessThenCurrentDate(leaveDate.getValue().toString())){
+		if(Checks.isLessThanCurrentDate(leaveDate.getValue().toString())){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);

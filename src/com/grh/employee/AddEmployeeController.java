@@ -98,7 +98,7 @@ public class AddEmployeeController implements Initializable{
 			dialog.showAndWait();
 			return;
 		}
-		if(!Checks.isLessThenCurrentDate(hiredDate.getValue().toString())){
+		if(!Checks.isLessThanCurrentDate(hiredDate.getValue().toString())){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);

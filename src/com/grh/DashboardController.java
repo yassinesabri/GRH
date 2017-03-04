@@ -134,6 +134,20 @@ public class DashboardController implements Initializable{
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.setTitle("GRH - Dashboard : Leave");
 	}
+	
+	public void vacationBtn(ActionEvent event){
+		Node node=null;
+		try {
+			node = (Node)FXMLLoader.load(getClass().getResource("vacation/vacation.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		rightAnchor.getChildren().setAll(node);
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.setTitle("GRH - Dashboard : Leave");
+	}
+	
 	public void promotionsBtn(ActionEvent event) throws IOException{
 		Node node=null;
 		try {

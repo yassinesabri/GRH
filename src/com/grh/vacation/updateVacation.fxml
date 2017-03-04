@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#buttonPressed" prefHeight="491.0" prefWidth="784.0" style="-fx-background-color: #ffffff; -fx-border-width: 2px; -fx-border-color: #0c999c;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grh.vacation.UpdateVacationController">
+   <children>
+      <Label layoutX="25.0" layoutY="50.0" text="First Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="414.0" layoutY="50.0" text="Last Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="217.0" prefHeight="27.0" prefWidth="154.0" text="Start Date">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXDatePicker fx:id="startDate" editable="false" layoutX="188.0" layoutY="214.0" />
+      <JFXButton buttonType="RAISED" layoutX="464.0" layoutY="405.0" onAction="#cancelBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="CANCEL">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="188.0" layoutY="405.0" onAction="#updateBtn" prefHeight="30.0" prefWidth="130.0" ripplerFill="WHITE" style="-fx-background-color: #80c17e;" text="UPDATE">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="414.0" layoutY="217.0" prefHeight="27.0" prefWidth="155.0" text="End Date">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXDatePicker fx:id="endDate" editable="false" layoutX="566.0" layoutY="214.0" />
+      <JFXTextField fx:id="firstName" layoutX="179.0" layoutY="48.0" />
+      <JFXTextField fx:id="lastName" layoutX="566.0" layoutY="48.0" />
+   </children>
+</Pane>

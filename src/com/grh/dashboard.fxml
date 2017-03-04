@@ -62,6 +62,11 @@
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></JFXButton>
+                                    <JFXButton buttonType="RAISED" onAction="#vacationBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="LEAVE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
                                     <JFXButton buttonType="RAISED" onAction="#recruitmentBtn" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="RECRUITMENT">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />

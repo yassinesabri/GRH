@@ -116,7 +116,7 @@ public class UpdateRecruitController implements Initializable {
 			dialog.showAndWait();
 			return;
 		}
-		if(!Checks.isLessThenCurrentDate(applicationDate.getValue().toString())){
+		if(!Checks.isLessThanCurrentDate(applicationDate.getValue().toString())){
 			Alert dialog = new Alert(AlertType.WARNING);
 			dialog.setTitle("Error");
 			dialog.setHeaderText(null);
@@ -129,7 +129,7 @@ public class UpdateRecruitController implements Initializable {
 		}
 		//check closing date only if status != pending
 		if(!status.getSelectionModel().getSelectedItem().toString().equals("pending")){
-			if(!Checks.isLessThenCurrentDate(closingDate.getValue().toString())){
+			if(!Checks.isLessThanCurrentDate(closingDate.getValue().toString())){
 				Alert dialog = new Alert(AlertType.WARNING);
 				dialog.setTitle("Error");
 				dialog.setHeaderText(null);
